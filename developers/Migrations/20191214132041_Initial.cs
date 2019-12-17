@@ -2,7 +2,7 @@
 
 namespace developers.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -15,7 +15,12 @@ namespace developers.Migrations
                     Name = table.Column<string>(nullable: true),
                     Technology = table.Column<string>(nullable: true),
                     Experience = table.Column<int>(nullable: false),
-                    GithubLink = table.Column<string>(nullable: true)
+                    GithubLink = table.Column<string>(nullable: true),
+                    Salary = table.Column<int>(nullable: false),
+                    Add1 = table.Column<string>(nullable: true),
+                    Add2 = table.Column<string>(nullable: true),
+                    Mobile = table.Column<int>(nullable: false),
+                    Email = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {

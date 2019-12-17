@@ -80,6 +80,7 @@ namespace developers.Controllers
         [HttpPost]
         public async Task<ActionResult<DeveloperList>> PostDeveloperList(DeveloperList developerList)
         {
+            Console.WriteLine(developerList.Mobile);
             _context.DeveloperLists.Add(developerList);
             await _context.SaveChangesAsync();
 

@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using developers.Models;
 
 namespace developers.Migrations
 {
     [DbContext(typeof(DeveloperListContext))]
-    partial class DeveloperListContextModelSnapshot : ModelSnapshot
+    [Migration("20191214132041_Initial")]
+    partial class Initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -40,8 +42,8 @@ namespace developers.Migrations
                     b.Property<string>("GithubLink")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Mobile")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Mobile")
+                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");

@@ -9,7 +9,7 @@ using developers.Models;
 namespace developers.Migrations
 {
     [DbContext(typeof(DeveloperListContext))]
-    [Migration("20191008113826_InitialCreate")]
+    [Migration("20191214132344_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,14 +27,29 @@ namespace developers.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Add1")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Add2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("Experience")
                         .HasColumnType("int");
 
                     b.Property<string>("GithubLink")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("Mobile")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Salary")
+                        .HasColumnType("int");
 
                     b.Property<string>("Technology")
                         .HasColumnType("nvarchar(max)");

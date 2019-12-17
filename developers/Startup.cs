@@ -41,6 +41,7 @@ namespace developers
             services.AddControllers();
             services.AddDbContext<DeveloperListContext>(opt =>
             opt.UseSqlServer(Configuration.GetConnectionString("Nikhil")));
+            services.AddControllers().AddNewtonsoftJson();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -57,7 +58,11 @@ namespace developers
 
             app.UseAuthorization();
 
-            app.UseCors(MyAllowSpecificOrigins);
+            app.UseCors(corsPolicyBuilder =>
+            corsPolicyBuilder.WithOrigins("http://localhost:4200")
+            .AllowAnyMethod()
+            .AllowAnyHeader()
+            );
 
             app.UseEndpoints(endpoints =>
             {
