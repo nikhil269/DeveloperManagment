@@ -35,7 +35,7 @@ namespace developers
                 options.AddPolicy(MyAllowSpecificOrigins,
                 builder =>
                 {
-                    builder.WithOrigins("http://localhost:4200");
+                    builder.WithOrigins("*");
                 });
             });
             services.AddControllers();
@@ -59,7 +59,7 @@ namespace developers
             app.UseAuthorization();
 
             app.UseCors(corsPolicyBuilder =>
-            corsPolicyBuilder.WithOrigins("http://localhost:4200")
+            corsPolicyBuilder.AllowAnyOrigin()
             .AllowAnyMethod()
             .AllowAnyHeader()
             );

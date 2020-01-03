@@ -6,9 +6,11 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using developers.Models;
+using Microsoft.AspNetCore.Cors;
 
 namespace developers.Controllers
 {
+    [EnableCors]
     [Route("api/[controller]")]
     [ApiController]
     public class DeveloperListsController : ControllerBase
@@ -22,10 +24,18 @@ namespace developers.Controllers
         }
 
         // GET: api/DeveloperLists
+        //[HttpGet]
+        //public async Task<ActionResult<IEnumerable<DeveloperList>>> GetDeveloperLists()
+        //{
+        //    return await _context.DeveloperLists.ToListAsync();
+        //}
+
+        //Get Developer list with Pagination
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<DeveloperList>>> GetDeveloperLists()
+        public async Task<ActionResult<IEnumerable<DeveloperList>>> GetDeveloperLists([FromQuery]Parameter parameter)
         {
-            return await _context.DeveloperLists.ToListAsync();
+            return await _context.DeveloperLists.Skip((parameter.PageNumber - 1) * parameter.PageSize)
+                .Take(parameter.PageSize).ToListAsync();
         }
 
         // GET: api/DeveloperLists/5
