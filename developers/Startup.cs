@@ -66,6 +66,11 @@ namespace developers
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllerRoute("default", "{controller=Default}/{action=Index}");
+            });
+
+            app.UseEndpoints(endpoints =>
+            {
                 endpoints.MapControllers();
             });
         }

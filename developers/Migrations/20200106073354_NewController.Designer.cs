@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using developers.Models;
 
 namespace developers.Migrations
 {
     [DbContext(typeof(DeveloperListContext))]
-    partial class DeveloperListContextModelSnapshot : ModelSnapshot
+    [Migration("20200106073354_NewController")]
+    partial class NewController
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

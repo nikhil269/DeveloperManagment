@@ -12,5 +12,6 @@ namespace developers.Models
         {
         }
         public DbSet<DeveloperList> DeveloperLists { get; set; }
+        public DbSet<DeveloperList> Developer { get; set; }
     }
 }

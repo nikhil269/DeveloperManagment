@@ -25,17 +25,20 @@ namespace developers.Controllers
 
         // GET: api/DeveloperLists
         //[HttpGet]
-        //public async Task<ActionResult<IEnumerable<DeveloperList>>> GetDeveloperLists()
+        //public async Task<ActionResult<IEnumerable<DeveloperList>>> GetAllDeveloperLists()
         //{
         //    return await _context.DeveloperLists.ToListAsync();
         //}
 
         //Get Developer list with Pagination
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<DeveloperList>>> GetDeveloperLists([FromQuery]Parameter parameter)
+        public async Task<ActionResult<IEnumerable<DeveloperList>>> GetDeveloperLists([FromQuery]Parameter parameter,string searchstring)
         {
+            var developer = from d in _context.DeveloperLists select d;
             return await _context.DeveloperLists.Skip((parameter.PageNumber - 1) * parameter.PageSize)
+                .Where(d => d.Name.Contains(searchstring) || string.IsNullOrWhiteSpace(searchstring))
                 .Take(parameter.PageSize).ToListAsync();
+            
         }
 
         // GET: api/DeveloperLists/5

@@ -1,0 +1,26 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using developers.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+
+namespace developers.Controllers
+{
+    public class DefaultController : Controller
+    {
+        private readonly DeveloperListContext _context;
+
+        public DefaultController(DeveloperListContext context)
+        {
+            _context = context;
+        }
+        [HttpGet]
+        public IActionResult GetAllDevelopers()
+        {
+            var developer = _context.Developer.ToList();
+            return Ok(developer);
+        }
+    }
+}
