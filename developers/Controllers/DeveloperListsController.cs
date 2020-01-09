@@ -32,13 +32,17 @@ namespace developers.Controllers
 
         //Get Developer list with Pagination
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<DeveloperList>>> GetDeveloperLists([FromQuery]Parameter parameter,string searchstring)
+        public async Task<ActionResult<DeveloperResponse>> GetDeveloperLists([FromQuery]Parameter parameter, string searchstring)
         {
-            var developer = from d in _context.DeveloperLists select d;
-            return await _context.DeveloperLists.Skip((parameter.PageNumber - 1) * parameter.PageSize)
+            var devlist = new DeveloperResponse();
+
+            devlist.Count = _context.DeveloperLists.ToList().Count;
+
+            devlist.DeveloperList = await _context.DeveloperLists.Skip((parameter.PageNumber - 1) * parameter.PageSize)
                 .Where(d => d.Name.Contains(searchstring) || string.IsNullOrWhiteSpace(searchstring))
                 .Take(parameter.PageSize).ToListAsync();
-            
+
+            return devlist;
         }
 
         // GET: api/DeveloperLists/5
