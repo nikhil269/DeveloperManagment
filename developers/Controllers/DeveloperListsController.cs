@@ -32,7 +32,7 @@ namespace developers.Controllers
 
         //Get Developer list with Pagination
         [HttpGet]
-        public async Task<ActionResult<DeveloperResponse>> GetDeveloperLists([FromQuery]Parameter parameter, string searchstring)
+        public async Task<ActionResult<DeveloperResponse>> GetDeveloperLists([FromQuery]Parameter parameter,string searchstring)
         {
             var devlist = new DeveloperResponse();
 
