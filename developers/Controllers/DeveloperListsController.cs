@@ -39,7 +39,7 @@ namespace developers.Controllers
             devlist.Count = _context.DeveloperLists.ToList().Count;
 
             devlist.DeveloperList = await _context.DeveloperLists.Skip((parameter.PageNumber - 1) * parameter.PageSize)
-                .Where(d => d.Name.Contains(searchstring) || string.IsNullOrWhiteSpace(searchstring))
+                .Where(d => d.FName.Contains(searchstring) || string.IsNullOrWhiteSpace(searchstring))
                 .Take(parameter.PageSize).ToListAsync();
 
             return devlist;

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using developers.Models;
 
 namespace developers.Migrations
 {
     [DbContext(typeof(DeveloperListContext))]
-    partial class DeveloperListContextModelSnapshot : ModelSnapshot
+    [Migration("20200116100633_NewDatabase")]
+    partial class NewDatabase
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -59,33 +61,6 @@ namespace developers.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("DeveloperList");
-                });
-
-            modelBuilder.Entity("developers.Models.TechModel", b =>
-                {
-                    b.Property<int>("item_id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("DeveloperListId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("item_text")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("item_id");
-
-                    b.HasIndex("DeveloperListId");
-
-                    b.ToTable("TechModel");
-                });
-
-            modelBuilder.Entity("developers.Models.TechModel", b =>
-                {
-                    b.HasOne("developers.Models.DeveloperList", null)
-                        .WithMany("Tech")
-                        .HasForeignKey("DeveloperListId");
                 });
 #pragma warning restore 612, 618
         }
